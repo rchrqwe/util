@@ -55,11 +55,14 @@ class GetMapFromJSONString implements JSONConvertUtil {
         Map<String, Object> map = JSONStringConvertMap.getInstance().jsonStringConvertMap(content);
         Map resultMap = null;
         Object object = null;
-        for (String key : keys) {
-            if(keys[0].equals(key)){
+        String[] ss = new String[keys.length-1];
+        object = map.get(keys[0]);
+        System.arraycopy(keys, 1, ss, 0, ss.length);
+        for (String key : ss) {
+           /* if(keys[0].equals(key)){
                 object = map.get(key);
 
-            }
+            }*/
 
             if (object instanceof List) {
                 if (((List) object).size() != 1) {
@@ -67,7 +70,7 @@ class GetMapFromJSONString implements JSONConvertUtil {
                 }
                 object = GetListFromJSONString.doParseJSONArrayOrJSONObject((List) object);
             }
-            if (object instanceof Map && !keys[keys.length-1].equals(key)) {
+            if (object instanceof Map/* && !keys[keys.length-1].equals(key)*/) {
                 Map<String, Object> temp = (Map<String, Object>) object;
                 object = temp.get(key);
             }

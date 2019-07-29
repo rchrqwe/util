@@ -7,4 +7,5 @@ import java.lang.annotation.*;
 @Documented
 @Inherited
 public @interface CustomParamsFilter {
+    String value() default "";
 }

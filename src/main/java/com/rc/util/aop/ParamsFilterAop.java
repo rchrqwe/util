@@ -45,6 +45,7 @@ public class ParamsFilterAop {
             for (Field f : field) {
                 // System.out.println(f.getName());
                 // 强制变量变为可视
+
                 f.setAccessible(true);
                 // 如果变量类型为String类型
                 if (f.get(target) instanceof String) {
